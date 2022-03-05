@@ -197,7 +197,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>I am looking to use blogging frameworks for so long now.<br>These are my requirements:</p>
+                <p>I was looking to use blogging frameworks for so long now.<br>I believe a good framework should cover the following requirements:</p>
 <ol>
 <li>Serverless</li>
 <li>Focussed blog writing (avoid debugging while writing)</li>
@@ -216,7 +216,7 @@
 <p>All I had to do was create a repo for source code. In <i>_config.yml</i> , I added</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: link <span class="built_in">to</span> <span class="keyword">a</span> different repo (username.github.io, you will have <span class="built_in">to</span> <span class="built_in">create</span> <span class="keyword">a</span> <span class="built_in">new</span> repo)</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 <p>That’s it. Then i ran </p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo init</span></span><br><span class="line"><span class="attribute">hexo deploy</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
 <p>Hexo creates a <i>public</i> folder and its content is pushed to <b>username.github.io</b></p>
 <p>And just like that and my blog page is live. I have to maintain 2 github repo. My main repo is private and the generated blog html/css/js is public.</p>
 <p>I use the command <b>hexo server</b> to work on localhost</p>
