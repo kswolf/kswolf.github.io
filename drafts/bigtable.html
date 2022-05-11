@@ -13,11 +13,11 @@
 
     <title>
         
-          HD&#39;s Blog
+          Bigtable - Use it right or suffer - HD&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://github.com/kswolf/tags/red-black-tree/">
+    <link rel="canonical" href="https://github.com/kswolf/drafts/bigtable.html">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -97,14 +97,21 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/drafts/bigtable.html">Bigtable - Use it right or suffer</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -147,7 +154,165 @@
 
 
     <!-- Main Content -->
-    <!-- Default Archive layout, we use archives instead. -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://github.com/kswolf/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('banner.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div style="background-image: url('/img/m25.png'); width: 100%; height: 100%">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                            <a class="tag" href="/tags/#undefined" title="undefined">undefined</a>
+                            
+                            <a class="tag" href="/tags/#undefined" title="undefined">undefined</a>
+                            
+                            <a class="tag" href="/tags/#undefined" title="undefined">undefined</a>
+                            
+                            <a class="tag" href="/tags/#undefined" title="undefined">undefined</a>
+                            
+                        </div>
+                        <h1>Bigtable - Use it right or suffer</h1>
+                        <h2 class="subheading">&quot;Great power... err&quot;</h2>
+                        <span class="meta">
+                            Posted on
+                            6 Mar 22
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>With continuous development and changing requirements, we need a multiple storage structures serving different purpose.<br><a href="https://cloud.google.com/bigtable/docs/overview#:~:text=Cloud%20Bigtable%20is%20a%20sparsely,known%20as%20the%20row%20key." target="_blank" rel="noopener">Big table</a> (or similar structured / featured) has a sincere role in this bigdata world. </p>
+<p>It is ideal for highly concurrent large storage databases, with large number of writes and reads and minimum relations. </p>
+<hr>
+<h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><p>It is basically a 3D key value mapping. It has no schema </p>
+<p><img src="kv.png" alt="3d key value architecture" title="3d key value architecture"></p>
+<p>Based on the <a href="https://research.google.com/archive/bigtable-osdi06.pdf" target="_blank" rel="noopener">2006, google’s bigtable research paper</a> (which was also as inspiration for <b>Java hbase</b> and <b>Cassandra</b>), it has a row key, column key and timestamps. The address to leaf value is <code>rowKey:columnKey:timestamp</code>.</p>
+<h2 id="Architecture-and-Storage-Model"><a href="#Architecture-and-Storage-Model" class="headerlink" title="Architecture and Storage Model"></a>Architecture and Storage Model</h2><h2 id="Pros-Cons"><a href="#Pros-Cons" class="headerlink" title="Pros / Cons"></a>Pros / Cons</h2><h2 id="Alternatives"><a href="#Alternatives" class="headerlink" title="Alternatives"></a>Alternatives</h2><h2 id="Cost-Overheads-and-Locking"><a href="#Cost-Overheads-and-Locking" class="headerlink" title="Cost, Overheads and Locking"></a>Cost, Overheads and Locking</h2><h2 id="Benchmarks"><a href="#Benchmarks" class="headerlink" title="Benchmarks"></a>Benchmarks</h2>
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#undefined" title="undefined">undefined</a>
+                        
+                          <a class="tag" href="/tags/#undefined" title="undefined">undefined</a>
+                        
+                          <a class="tag" href="/tags/#undefined" title="undefined">undefined</a>
+                        
+                          <a class="tag" href="/tags/#undefined" title="undefined">undefined</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                </ul>
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
 
     <!-- Footer -->
     <!-- Footer -->
