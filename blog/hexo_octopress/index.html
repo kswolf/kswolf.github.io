@@ -50,6 +50,10 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 
@@ -97,6 +101,13 @@
 
                         
                         <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archives/">Archives</a>
                         </li>
                         
@@ -105,13 +116,6 @@
                         
                         <li>
                             <a href="/drafts/bigtable.html">Bigtable - Use it right or suffer</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -221,9 +225,9 @@
 <h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></h2><p>Hexo is a npm library which does everything that jekyll does for Octopress, but it is much simpler to deploy.</p>
 <p>I wouldn’t deny that using octopress, now I had more experience with <a href="https://jamstack.org/generators/" target="_blank" rel="noopener">Static Site Generators</a>, but this was still very straight forward.</p>
 <p>All I had to do was create a repo for source code. In <i>_config.yml</i> , I added</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: link <span class="built_in">to</span> <span class="keyword">a</span> different repo (username.github.io, you will have <span class="built_in">to</span> <span class="built_in">create</span> <span class="keyword">a</span> <span class="built_in">new</span> repo)</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: link <span class="built_in">to</span> <span class="keyword">a</span> different repo (username.github.io, you will have <span class="built_in">to</span> <span class="built_in">create</span> <span class="keyword">a</span> <span class="built_in">new</span> repo)</span><br><span class="line">  branch: master</span><br></pre></td></tr></tbody></table></figure>
 <p>That’s it. Then i ran </p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></tbody></table></figure>
 <p>Hexo creates a <i>public</i> folder and its content is pushed to <b>username.github.io</b></p>
 <p>And just like that and my blog page is live. I have to maintain 2 github repo. My main repo is private and the generated blog html/css/js is public.</p>
 <p>I use the command <b>hexo server</b> to work on localhost</p>

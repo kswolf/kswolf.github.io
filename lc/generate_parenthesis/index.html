@@ -50,6 +50,10 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
 
@@ -97,6 +101,13 @@
 
                         
                         <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
                             <a href="/archives/">Archives</a>
                         </li>
                         
@@ -105,13 +116,6 @@
                         
                         <li>
                             <a href="/drafts/bigtable.html">Bigtable - Use it right or suffer</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
-                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -210,16 +214,16 @@
 </blockquote>
 <h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" rel="noopener">Problem Statement</a></h4><p>Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
 <p>Example 1:</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">3</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"((()))"</span>,<span class="string">"(()())"</span>,<span class="string">"(())()"</span>,<span class="string">"()(())"</span>,<span class="string">"()()()"</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">3</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"((()))"</span>,<span class="string">"(()())"</span>,<span class="string">"(())()"</span>,<span class="string">"()(())"</span>,<span class="string">"()()()"</span>]</span><br></pre></td></tr></tbody></table></figure>
 <p>Example 2:</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">1</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"()"</span>]</span><br></pre></td></tr></table></figure>
-<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure"></a>go_figure</h4><p>I have <i>n sets</i>. If I had to add all <i>2n</i> parenthesis in any order, we can have a greedy solution using PnC. But we have a <i>constraint</i>:</p>
+<figure class="highlight avrasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">1</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"()"</span>]</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure "></a>go_figure <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h4><p>I have <i>n sets</i>. If I had to add all <i>2n</i> parenthesis in any order, we can have a greedy solution using PnC. But we have a <i>constraint</i>:</p>
 <blockquote>
 <p>We can only add closing parenthesis <code>)</code> if it has a pairing <code>(</code> to its left.</p>
 </blockquote>
 <p>So we can add brackets recursively, with the condition that count of <code>(</code> should be greater than equal to <code>)</code>. If we wanted subsequences as well, we can add each addition to resultant array.<br>But, for sequence of length <i>2n</i>, we will add sequence when we have exhausted both parenthesis.</p>
 <p>Look at the below code, see if it make sense…</p>
-<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var generateParenthesis = function(n) &#123;</span><br><span class="line">   <span class="built_in"> const </span>res = [];                                                       // resultant array</span><br><span class="line">   <span class="built_in"> const </span>gen = (left, right, str) =&gt; &#123;</span><br><span class="line">       <span class="built_in"> if </span>(left === n &amp;&amp; right === n) &#123;                                  //<span class="built_in"> add </span>only<span class="built_in"> if </span>both parenthesis are exhausted</span><br><span class="line">            res.push(str)</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">       <span class="built_in"> if </span>(left &lt; n) gen(left + 1, right, str + <span class="string">"("</span>)                     //<span class="built_in"> add </span>only<span class="built_in"> if </span>remaining</span><br><span class="line">       <span class="built_in"> if </span>(left &gt; right) gen(left, right + 1, str + <span class="string">")"</span>)                 //<span class="built_in"> add </span>only<span class="built_in"> if </span>has a pairing opening parenthesis to its left</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    gen(0,0,<span class="string">""</span>)</span><br><span class="line">   <span class="built_in"> return </span>res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight smali"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var generateParenthesis = function(n) {</span><br><span class="line">   <span class="built_in"> const </span>res = [];                                                       // resultant array</span><br><span class="line">   <span class="built_in"> const </span>gen = (left, right, str) =&gt; {</span><br><span class="line">       <span class="built_in"> if </span>(left === n &amp;&amp; right === n) {                                  //<span class="built_in"> add </span>only<span class="built_in"> if </span>both parenthesis are exhausted</span><br><span class="line">            res.push(str)</span><br><span class="line">            return</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">       <span class="built_in"> if </span>(left &lt; n) gen(left + 1, right, str + <span class="string">"("</span>)                     //<span class="built_in"> add </span>only<span class="built_in"> if </span>remaining</span><br><span class="line">       <span class="built_in"> if </span>(left &gt; right) gen(left, right + 1, str + <span class="string">")"</span>)                 //<span class="built_in"> add </span>only<span class="built_in"> if </span>has a pairing opening parenthesis to its left</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    gen(0,0,<span class="string">""</span>)</span><br><span class="line">   <span class="built_in"> return </span>res</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
 
                 <hr>
 
