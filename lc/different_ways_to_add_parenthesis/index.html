@@ -13,11 +13,11 @@
 
     <title>
         
-          Hexo over Octopress - HD&#39;s Blog
+          Different Ways to Add Parentheses (lc) - HD&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://github.com/kswolf/blog/hexo_octopress/">
+    <link rel="canonical" href="https://github.com/kswolf/lc/different_ways_to_add_parenthesis/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -170,18 +170,20 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#blogging" title="blogging">blogging</a>
+                            <a class="tag" href="/tags/#dp" title="dp">dp</a>
                             
-                            <a class="tag" href="/tags/#octopress" title="octopress">octopress</a>
+                            <a class="tag" href="/tags/#recursion" title="recursion">recursion</a>
                             
-                            <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                            <a class="tag" href="/tags/#lc" title="lc">lc</a>
+                            
+                            <a class="tag" href="/tags/#memo" title="memo">memo</a>
                             
                         </div>
-                        <h1>Hexo over Octopress</h1>
-                        <h2 class="subheading">&quot;Mark it down&quot;</h2>
+                        <h1>Different Ways to Add Parentheses (lc)</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted on
-                            5 Mar 22
+                            13 May 22
                         </span>
                     </div>
                 </div>
@@ -201,33 +203,35 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>I was looking to use blogging frameworks for so long now.<br>I believe a good framework should cover the following requirements:</p>
-<ol>
-<li>Serverless</li>
-<li>Focussed blog writing (avoid debugging while writing)</li>
-<li>Theme community support</li>
-</ol>
-<p>The two open source “Static Site Generators” octopress and hexo are well heard of. </p>
-<p>A blog I was following for long was made in octopress, so I too started with octopress</p>
-<hr>
-<h2 id="Octopress"><a href="#Octopress" class="headerlink" title="Octopress"></a><a href="http://octopress.org/docs/setup/" target="_blank" rel="noopener">Octopress</a></h2><p>Octopress is <a href="https://jekyllrb.com/" target="_blank" rel="noopener">jekyll</a> based blogging. It generates a static html based out of your source code, which you can push to your git. You can server your blog page via github pages (there are other altenatives like heroku, which I may try later on). </p>
-<p>So, github pages can be used to make a serverless blogging page. Its quite straight forward to <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener">create</a>. All you need is a github account.<br>Every time you push your changes, github builds your code with jekyll and is auto deployed.</p>
-<p><img src="github_build_details.png" alt="alt text" title="Title"></p>
-<p>The issue with Octopress 3, which I found was that it supported jekyll version 2 and not 3.6.3 which is used by github to run the build. It took serious amount of configuration changes to get it up and running.</p>
-<p>To the rescue, <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></h2><p>Hexo is a npm library which does everything that jekyll does for Octopress, but it is much simpler to deploy.</p>
-<p>I wouldn’t deny that using octopress, now I had more experience with <a href="https://jamstack.org/generators/" target="_blank" rel="noopener">Static Site Generators</a>, but this was still very straight forward.</p>
-<p>All I had to do was create a repo for source code. In <i>_config.yml</i> , I added</p>
-<figure class="highlight livecodeserver"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: link <span class="built_in">to</span> <span class="keyword">a</span> different repo (username.github.io, you will have <span class="built_in">to</span> <span class="built_in">create</span> <span class="keyword">a</span> <span class="built_in">new</span> repo)</span><br><span class="line">  branch: master</span><br></pre></td></tr></tbody></table></figure>
-<p>That’s it. Then i ran </p>
-<figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></tbody></table></figure>
-<p>Hexo creates a <i>public</i> folder and its content is pushed to <b>username.github.io</b></p>
-<p>And just like that and my blog page is live. I have to maintain 2 github repo. My main repo is private and the generated blog html/css/js is public.</p>
-<p>I use the command <b>hexo server</b> to work on localhost</p>
-<blockquote>
-<p>PS. don’t forget to add <code>public</code> folder to <code>.gitignore</code></p>
+                <blockquote>
+<p>Solutions are biased by problems</p>
+<p>– Me</p>
 </blockquote>
-
+<h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/different-ways-to-add-parentheses/submissions/" target="_blank" rel="noopener">Problem Statement</a></h4><p>Given a string expression of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. You may return the answer in any order.</p>
+<p>Example 1:</p>
+<figure class="highlight subunit"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: expression = "2<span class="string">-1</span><span class="string">-1</span>"</span><br><span class="line">Output: [0,2]</span><br><span class="line">Explanation:</span><br><span class="line">((2<span class="string">-1</span>)<span class="string">-1</span>) = 0 </span><br><span class="line">(2-(1<span class="string">-1</span>)) = 2</span><br></pre></td></tr></tbody></table></figure>
+<p>Example 2:</p>
+<figure class="highlight subunit"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: expression = "2*3<span class="string">-4</span>*5"</span><br><span class="line">Output: [<span class="string">-34</span>,<span class="string">-14</span>,<span class="string">-10</span>,<span class="string">-10</span>,10]</span><br><span class="line">Explanation:</span><br><span class="line">(2*(3-(4*5))) = <span class="string">-34</span> </span><br><span class="line">((2*3)-(4*5)) = <span class="string">-14</span> </span><br><span class="line">((2*(3<span class="string">-4</span>))*5) = <span class="string">-10</span> </span><br><span class="line">(2*((3<span class="string">-4</span>)*5)) = <span class="string">-10</span> </span><br><span class="line">(((2*3)<span class="string">-4</span>)*5) = 10</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure "></a>go_figure <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h4><p>I got confused and took a wrong path here. I call it question bias</p>
+<p>Initial thoughts on the problem statement:</p>
+<ol>
+<li>The question framed me to create a bracketted string before solving it.</li>
+<li>I saw a sub problem <em>to the right</em> of every position. If I solve it, I can bubble up and solve the given problem(It could be dp).</li>
+<li>I need a function to solve bracketed strings (this will be a stack solution)</li>
+</ol>
+<p>I was working twice as hard (creating bracketted string, solving bracketted string). 🐟</p>
+<blockquote>
+<p>✔️ Instead of creating bracketed strings, I can directly start calculating for the solution. Fortunately this thought also helped me find an error in above proposed solution.  </p>
+</blockquote>
+<p>Eventually got around the correct thought process,</p>
+<ol>
+<li>Sub problem thinking was the issue. Though it has subproblems, but not only to right but also to left for every position</li>
+<li>So, for each non integer place, we can recursively solve for left and right and combine both solution (many to many operations)</li>
+</ol>
+<p>Pseudo code for revised solution </p>
+<figure class="highlight vim"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen</span><span class="params">(str)</span> {</span></span><br><span class="line">    <span class="keyword">if</span> s does not include operator<span class="variable">s:</span></span><br><span class="line">        <span class="keyword">return</span> [s]</span><br><span class="line"></span><br><span class="line">    loop over <span class="variable">s:</span></span><br><span class="line">        <span class="keyword">if</span> s[i] <span class="keyword">is</span> not <span class="keyword">a</span> <span class="keyword">number</span></span><br><span class="line">            leftPossibilities = gen(<span class="keyword">left</span>)</span><br><span class="line">            rightPossibilities = gen(<span class="keyword">right</span>)</span><br><span class="line"></span><br><span class="line">            loop lef<span class="variable">t:</span></span><br><span class="line">                loop righ<span class="variable">t:</span></span><br><span class="line">                    combine with ith operation</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>Look at the below code, see if it make sense…</p>
+<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> diffWaysToCompute = <span class="function"><span class="keyword">function</span>(<span class="params">expression</span>) </span>{</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> ops = {</span><br><span class="line">        <span class="string">"+"</span>: <span class="function">(<span class="params">l,r</span>) =&gt;</span> l + r,</span><br><span class="line">        <span class="string">"-"</span>: <span class="function">(<span class="params">l,r</span>) =&gt;</span> l - r,</span><br><span class="line">        <span class="string">"*"</span>: <span class="function">(<span class="params">l,r</span>) =&gt;</span> l * r</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">const</span> solMap = {}</span><br><span class="line">    <span class="keyword">const</span> gen = <span class="function">(<span class="params">str</span>) =&gt;</span> {        </span><br><span class="line">        <span class="keyword">if</span> (solMap[str]) {</span><br><span class="line">            <span class="keyword">return</span> solMap[str]</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (!str.includes(<span class="string">"*"</span>) &amp;&amp; !str.includes(<span class="string">"+"</span>) &amp;&amp; !str.includes(<span class="string">"-"</span>)) {</span><br><span class="line">            solMap[str] = [<span class="built_in">parseInt</span>(str) || <span class="number">0</span>]</span><br><span class="line">            <span class="keyword">return</span> [<span class="built_in">parseInt</span>(str) || <span class="number">0</span>]</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">let</span> sols = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; str.length; i++) {            </span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isNaN</span>(str[i])) {</span><br><span class="line">                <span class="keyword">let</span> right = gen(str.slice(i+<span class="number">1</span>))</span><br><span class="line">                <span class="keyword">let</span> left = gen(str.slice(<span class="number">0</span>,i))</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">let</span> l <span class="keyword">of</span> left) {</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">let</span> r <span class="keyword">of</span> right) {</span><br><span class="line">                        sols.push(ops[str[i]](l, r))    </span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">                    </span><br><span class="line">                </span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        solMap[str] = sols</span><br><span class="line">        <span class="keyword">return</span> sols</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> ways = gen(expression)</span><br><span class="line">    <span class="keyword">return</span> ways</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
 
                 <hr>
 
@@ -235,10 +239,10 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/lc/generate_parenthesis/" data-toggle="tooltip" data-placement="top" title="Generate Parenthesis (lc)">&larr; Previous Post</a>
-                        </li>
                     
+                        <li class="next">
+                            <a href="/lc/palindrome_partitioning/" data-toggle="tooltip" data-placement="top" title="Palindrome Partitioning (lc)">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
 
@@ -264,11 +268,13 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#blogging" title="blogging">blogging</a>
+                          <a class="tag" href="/tags/#dp" title="dp">dp</a>
                         
-                          <a class="tag" href="/tags/#octopress" title="octopress">octopress</a>
+                          <a class="tag" href="/tags/#recursion" title="recursion">recursion</a>
                         
-                          <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                          <a class="tag" href="/tags/#lc" title="lc">lc</a>
+                        
+                          <a class="tag" href="/tags/#memo" title="memo">memo</a>
                         
                     </div>
                 </section>
