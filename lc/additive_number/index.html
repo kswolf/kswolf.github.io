@@ -13,11 +13,11 @@
 
     <title>
         
-          Hexo over Octopress - HD&#39;s Blog
+          Additive Number (lc) - HD&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://github.com/kswolf/blog/hexo_octopress/">
+    <link rel="canonical" href="https://github.com/kswolf/lc/additive_number/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -170,18 +170,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#blogging" title="blogging">blogging</a>
+                            <a class="tag" href="/tags/#lc" title="lc">lc</a>
                             
-                            <a class="tag" href="/tags/#octopress" title="octopress">octopress</a>
-                            
-                            <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                            <a class="tag" href="/tags/#bruteforce" title="bruteforce">bruteforce</a>
                             
                         </div>
-                        <h1>Hexo over Octopress</h1>
-                        <h2 class="subheading">&quot;Mark it down&quot;</h2>
+                        <h1>Additive Number (lc)</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted on
-                            5 Mar 22
+                            14 May 22
                         </span>
                     </div>
                 </div>
@@ -201,33 +199,30 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>I was looking to use blogging frameworks for so long now.<br>I believe a good framework should cover the following requirements:</p>
-<ol>
-<li>Serverless</li>
-<li>Focussed blog writing (avoid debugging while writing)</li>
-<li>Theme community support</li>
-</ol>
-<p>The two open source “Static Site Generators” octopress and hexo are well heard of. </p>
-<p>A blog I was following for long was made in octopress, so I too started with octopress</p>
-<hr>
-<h2 id="Octopress"><a href="#Octopress" class="headerlink" title="Octopress"></a><a href="http://octopress.org/docs/setup/" target="_blank" rel="noopener">Octopress</a></h2><p>Octopress is <a href="https://jekyllrb.com/" target="_blank" rel="noopener">jekyll</a> based blogging. It generates a static html based out of your source code, which you can push to your git. You can server your blog page via github pages (there are other altenatives like heroku, which I may try later on). </p>
-<p>So, github pages can be used to make a serverless blogging page. Its quite straight forward to <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener">create</a>. All you need is a github account.<br>Every time you push your changes, github builds your code with jekyll and is auto deployed.</p>
-<p><img src="github_build_details.png" alt="alt text" title="Title"></p>
-<p>The issue with Octopress 3, which I found was that it supported jekyll version 2 and not 3.6.3 which is used by github to run the build. It took serious amount of configuration changes to get it up and running.</p>
-<p>To the rescue, <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></p>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a></h2><p>Hexo is a npm library which does everything that jekyll does for Octopress, but it is much simpler to deploy.</p>
-<p>I wouldn’t deny that using octopress, now I had more experience with <a href="https://jamstack.org/generators/" target="_blank" rel="noopener">Static Site Generators</a>, but this was still very straight forward.</p>
-<p>All I had to do was create a repo for source code. In <i>_config.yml</i> , I added</p>
-<figure class="highlight livecodeserver"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: link <span class="built_in">to</span> <span class="keyword">a</span> different repo (username.github.io, you will have <span class="built_in">to</span> <span class="built_in">create</span> <span class="keyword">a</span> <span class="built_in">new</span> repo)</span><br><span class="line">  branch: master</span><br></pre></td></tr></tbody></table></figure>
-<p>That’s it. Then i ran </p>
-<figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></tbody></table></figure>
-<p>Hexo creates a <i>public</i> folder and its content is pushed to <b>username.github.io</b></p>
-<p>And just like that and my blog page is live. I have to maintain 2 github repo. My main repo is private and the generated blog html/css/js is public.</p>
-<p>I use the command <b>hexo server</b> to work on localhost</p>
-<blockquote>
-<p>PS. don’t forget to add <code>public</code> folder to <code>.gitignore</code></p>
+                <blockquote>
+<p>Algorithm: Word used by programmers when they don’t want to explain what they did.</p>
+<p>– <cite><a href="https://www.amazon.com/Algorithm-Word-Used-Programmers-Explain/dp/1081977302" target="_blank" rel="noopener">Amazon</a></cite></p>
 </blockquote>
-
+<h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/additive-number/" target="_blank" rel="noopener">Problem Statement</a></h4><p>An additive number is a string whose digits can form an additive sequence.</p>
+<p>A valid additive sequence should contain at least three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of the preceding two.</p>
+<p>Given a string containing only digits, return true if it is an additive number or false otherwise.</p>
+<p>Note: Numbers in the additive sequence cannot have leading zeros, so sequence 1, 2, 03 or 1, 02, 3 is invalid.</p>
+<p>Example 1:</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">"112358"</span></span><br><span class="line"><span class="attr">Output:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">Explanation:</span> </span><br><span class="line"><span class="attr">The digits can form an additive sequence:</span> <span class="number">1</span><span class="string">,</span> <span class="number">1</span><span class="string">,</span> <span class="number">2</span><span class="string">,</span> <span class="number">3</span><span class="string">,</span> <span class="number">5</span><span class="string">,</span> <span class="number">8</span><span class="string">.</span> </span><br><span class="line"><span class="number">1</span> <span class="string">+</span> <span class="number">1</span> <span class="string">=</span> <span class="number">2</span><span class="string">,</span> <span class="number">1</span> <span class="string">+</span> <span class="number">2</span> <span class="string">=</span> <span class="number">3</span><span class="string">,</span> <span class="number">2</span> <span class="string">+</span> <span class="number">3</span> <span class="string">=</span> <span class="number">5</span><span class="string">,</span> <span class="number">3</span> <span class="string">+</span> <span class="number">5</span> <span class="string">=</span> <span class="number">8</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Example 2:</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">"199100199"</span></span><br><span class="line"><span class="attr">Output:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">Explanation:</span> </span><br><span class="line"><span class="attr">The additive sequence is:</span> <span class="number">1</span><span class="string">,</span> <span class="number">99</span><span class="string">,</span> <span class="number">100</span><span class="string">,</span> <span class="number">199</span><span class="string">.</span> </span><br><span class="line"><span class="number">1</span> <span class="string">+</span> <span class="number">99</span> <span class="string">=</span> <span class="number">100</span><span class="string">,</span> <span class="number">99</span> <span class="string">+</span> <span class="number">100</span> <span class="string">=</span> <span class="number">199</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure "></a>go_figure <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h4><p>Initial thoughts on the problem statement:</p>
+<ol>
+<li>Later string depends on first two elements. I need to identify only first 2 elements.</li>
+<li>1st number cannot be longer than <code>length(string) / 2</code>.</li>
+<li>2nd number lies between <code>(firstend + 1, length(string) - (i + 1))</code> </li>
+<li>I need to ignore cases which has numbers starting with 0</li>
+</ol>
+<p>Let’s write some pseudo code, looks like simple brute force</p>
+<figure class="highlight livecodeserver"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen</span>(<span class="title">num</span>) {</span></span><br><span class="line">    loop: i = <span class="number">0</span> -&gt; <span class="built_in">len</span>(<span class="built_in">num</span>) / <span class="number">2</span></span><br><span class="line">        loop: j = i + <span class="number">1</span> -&gt; <span class="built_in">len</span>(<span class="built_in">num</span>) - (i + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">first</span> = <span class="built_in">num</span>[<span class="number">0</span>-i]</span><br><span class="line">            <span class="keyword">second</span> = <span class="built_in">num</span>[i+<span class="number">1</span> - j]</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">first</span> <span class="keyword">or</span> <span class="keyword">second</span> <span class="built_in">start</span> <span class="keyword">with</span> <span class="number">0</span>:</span><br><span class="line">                continue</span><br><span class="line">            <span class="keyword">if</span> checkSequence(<span class="keyword">first</span>, <span class="keyword">second</span>, <span class="built_in">num</span>):</span><br><span class="line">                <span class="literal">return</span> <span class="literal">true</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="1.png" alt="additive number leet code" title="additive number leet code"></p>
+<p>Look at the below code, see if it make sense…</p>
+<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight matlab"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var isAdditiveNumber = <span class="function"><span class="keyword">function</span><span class="params">(num)</span> { </span></span><br><span class="line">    <span class="keyword">for</span> (let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; num.<span class="built_in">length</span>/<span class="number">2</span>; <span class="built_in">i</span>++) {</span><br><span class="line">        <span class="keyword">for</span> (let <span class="built_in">j</span> = <span class="built_in">i</span> + <span class="number">1</span>; <span class="built_in">j</span> &lt; num.<span class="built_in">length</span> - <span class="built_in">i</span> <span class="number">-1</span>; <span class="built_in">j</span>++) {</span><br><span class="line">            let f = num.slice(<span class="number">0</span>,<span class="built_in">i</span> + <span class="number">1</span>);</span><br><span class="line">            let s = num.slice(<span class="built_in">i</span> + <span class="number">1</span>,<span class="built_in">j</span> + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (f.<span class="built_in">length</span> &gt; <span class="number">1</span> &amp;&amp; f[<span class="number">0</span>] == <span class="number">0</span>) {</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (s.<span class="built_in">length</span> &gt; <span class="number">1</span> &amp;&amp; s[<span class="number">0</span>] == <span class="number">0</span>) {</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (checkSeq(f, s, num)) {</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">true</span></span><br><span class="line">            }</span><br><span class="line">        }   </span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">false</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkSeq</span><span class="params">(f, l, s)</span> {</span></span><br><span class="line">    let res = <span class="string">""</span> + f + l</span><br><span class="line">    <span class="keyword">while</span>(res.<span class="built_in">length</span> &lt; s.<span class="built_in">length</span>) {</span><br><span class="line">        let next  = sum(f, l);</span><br><span class="line">        res += next</span><br><span class="line">        f = l;</span><br><span class="line">        l = next;        </span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> res === s</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(a,b)</span> {</span></span><br><span class="line">    <span class="keyword">return</span> parseInt(a) + parseInt(b)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
                 <hr>
 
@@ -235,10 +230,10 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/lc/generate_parenthesis/" data-toggle="tooltip" data-placement="top" title="Generate Parenthesis (lc)">&larr; Previous Post</a>
-                        </li>
                     
+                        <li class="next">
+                            <a href="/lc/different_ways_to_add_parenthesis/" data-toggle="tooltip" data-placement="top" title="Different Ways to Add Parentheses (lc)">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
 
@@ -264,11 +259,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#blogging" title="blogging">blogging</a>
+                          <a class="tag" href="/tags/#lc" title="lc">lc</a>
                         
-                          <a class="tag" href="/tags/#octopress" title="octopress">octopress</a>
-                        
-                          <a class="tag" href="/tags/#hexo" title="hexo">hexo</a>
+                          <a class="tag" href="/tags/#bruteforce" title="bruteforce">bruteforce</a>
                         
                     </div>
                 </section>
