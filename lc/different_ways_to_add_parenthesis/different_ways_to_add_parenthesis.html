@@ -1,0 +1,97 @@
+<hr>
+<p>layout:     post<br>category:   “lc”<br>title:      “Different Ways to Add Parentheses (lc)”<br>subtitle:   “”<br>date:       2022-05-13 12:00:00<br>author:     “hd”<br>header-img: “banner.jpg”<br>mask: “15”<br>display: “different_ways_to_add_parenthesis”<br>description: “Solutions are biased by problems”<br>tags:</p>
+<pre><code>- dp
+- recursion
+- lc
+- memo
+</code></pre><hr>
+<blockquote>
+<p>Solutions are biased by problems</p>
+<p>– Me</p>
+</blockquote>
+<h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/different-ways-to-add-parentheses/submissions/">Problem Statement</a></h4><p>Given a string expression of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. You may return the answer in any order.</p>
+<p>Example 1:</p>
+<pre><code>Input: expression = &quot;2-1-1&quot;
+Output: [0,2]
+Explanation:
+((2-1)-1) = 0 
+(2-(1-1)) = 2
+</code></pre><p>Example 2:</p>
+<pre><code>Input: expression = &quot;2*3-4*5&quot;
+Output: [-34,-14,-10,-10,10]
+Explanation:
+(2*(3-(4*5))) = -34 
+((2*3)-(4*5)) = -14 
+((2*(3-4))*5) = -10 
+(2*((3-4)*5)) = -10 
+(((2*3)-4)*5) = 10
+</code></pre><h4 id="go-figure-github-emoji-thinking"><a href="#go-figure-github-emoji-thinking" class="headerlink" title="go_figure {% github_emoji thinking %}"></a>go_figure {% github_emoji thinking %}</h4><p>I got confused and took a wrong path here. I call it question bias</p>
+<p>Initial thoughts on the problem statement:</p>
+<ol>
+<li>The question framed me to create a bracketted string before solving it.</li>
+<li>I saw a sub problem <em>to the right</em> of every position. If I solve it, I can bubble up and solve the given problem(It could be dp).</li>
+<li>I need a function to solve bracketed strings (this will be a stack solution)</li>
+</ol>
+<p>I was working twice as hard (creating bracketted string, solving bracketted string). 🐟</p>
+<blockquote>
+<p>✔️ Instead of creating bracketed strings, I can directly start calculating for the solution. Fortunately this thought also helped me find an error in above proposed solution.  </p>
+</blockquote>
+<p>Eventually got around the correct thought process,</p>
+<ol>
+<li>Sub problem thinking was the issue. Though it has subproblems, but not only to right but also to left for every position</li>
+<li>So, for each non integer place, we can recursively solve for left and right and combine both solution (many to many operations)</li>
+</ol>
+<p>Pseudo code for revised solution </p>
+<pre><code>function gen(str) {
+    if s does not include operators:
+        return [s]
+
+    loop over s:
+        if s[i] is not a number
+            leftPossibilities = gen(left)
+            rightPossibilities = gen(right)
+
+            loop left:
+                loop right:
+                    combine with ith operation
+}
+</code></pre><p>Look at the below code, see if it make sense…</p>
+<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><pre><code>var diffWaysToCompute = function(expression) {
+
+    const ops = {
+        &quot;+&quot;: (l,r) =&gt; l + r,
+        &quot;-&quot;: (l,r) =&gt; l - r,
+        &quot;*&quot;: (l,r) =&gt; l * r
+    }
+    const solMap = {}
+    const gen = (str) =&gt; {        
+        if (solMap[str]) {
+            return solMap[str]
+        }
+        if (!str.includes(&quot;*&quot;) &amp;&amp; !str.includes(&quot;+&quot;) &amp;&amp; !str.includes(&quot;-&quot;)) {
+            solMap[str] = [parseInt(str) || 0]
+            return [parseInt(str) || 0]
+        }
+        let sols = [];
+        for (let i = 0; i &lt; str.length; i++) {            
+            if (isNaN(str[i])) {
+                let right = gen(str.slice(i+1))
+                let left = gen(str.slice(0,i))
+                for (let l of left) {
+                    for (let r of right) {
+                        sols.push(ops[str[i]](l, r))    
+                    }
+                }
+
+
+            }
+        }
+
+        solMap[str] = sols
+        return sols
+    }
+
+    const ways = gen(expression)
+    return ways
+};
+</code></pre>

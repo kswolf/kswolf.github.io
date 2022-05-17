@@ -13,11 +13,11 @@
 
     <title>
         
-          Generate Parenthesis (lc) - HD&#39;s Blog
+          Palindromic Substrings (lc) - HD&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://github.com/kswolf/lc/generate_parenthesis/">
+    <link rel="canonical" href="https://github.com/kswolf/lc/palindromic_substrings/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -170,18 +170,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                            <a class="tag" href="/tags/#dp" title="dp">dp</a>
-                            
-                            <a class="tag" href="/tags/#recursion" title="recursion">recursion</a>
-                            
                             <a class="tag" href="/tags/#lc" title="lc">lc</a>
                             
                         </div>
-                        <h1>Generate Parenthesis (lc)</h1>
+                        <h1>Palindromic Substrings (lc)</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted on
-                            11 May 22
+                            17 May 22
                         </span>
                     </div>
                 </div>
@@ -202,21 +198,29 @@
                 post-container">
 
                 <blockquote>
-<p>An algorithm must be seen to be believed.</p>
-<p>– <cite><a href="https://en.wikipedia.org/wiki/Donald_Knuth" target="_blank" rel="noopener">Donald Knuth</a></cite></p>
+<p>Remember that there is no code faster than no code.</p>
+<p>– <cite><a href="https://twitter.com/kevlinhenney/status/538296047899267073?lang=en" target="_blank" rel="noopener">Kevlin Henney</a></cite></p>
 </blockquote>
-<h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" rel="noopener">Problem Statement</a></h4><p>Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
+<h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/palindromic-substrings/" target="_blank" rel="noopener">Problem Statement</a></h4><p>Given a string s, return the number of palindromic substrings in it.</p>
+<p>A string is a palindrome when it reads the same backward as forward.</p>
+<p>A substring is a contiguous sequence of characters within the string.</p>
 <p>Example 1:</p>
-<figure class="highlight avrasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">3</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"((()))"</span>,<span class="string">"(()())"</span>,<span class="string">"(())()"</span>,<span class="string">"()(())"</span>,<span class="string">"()()()"</span>]</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Input:</span> s = <span class="string">"abc"</span></span><br><span class="line"><span class="string">Output:</span> <span class="number">3</span></span><br><span class="line"><span class="string">Explanation:</span> Three palindromic <span class="string">strings:</span> <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>.</span><br></pre></td></tr></tbody></table></figure>
 <p>Example 2:</p>
-<figure class="highlight avrasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">1</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"()"</span>]</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure "></a>go_figure <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h4><p>I have <i>n sets</i>. If I had to add all <i>2n</i> parenthesis in any order, we can have a greedy solution using PnC. But we have a <i>constraint</i>:</p>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">Input:</span> s = <span class="string">"aaa"</span></span><br><span class="line"><span class="string">Output:</span> <span class="number">6</span></span><br><span class="line"><span class="string">Explanation:</span> Six palindromic <span class="string">strings:</span> <span class="string">"a"</span>, <span class="string">"a"</span>, <span class="string">"a"</span>, <span class="string">"aa"</span>, <span class="string">"aa"</span>, <span class="string">"aaa"</span>.</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure "></a>go_figure <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h4><p>There is a straight forward <strong>O(n<sup>2</sup>)</strong> solution to this, i.e. iterate over all combinations of strings and if it is a palindrome increment counter.</p>
+<p>Initial thoughts over optimizing above solution:</p>
+<p>Moving in one direction seems reduntant, as some cases can be entirely eliminated for checks.<br>For example, if I find a palindrome, I can be sure (other than exceptions), that there is no palindrome until I go to <code>2 * length(palindrome) - 1</code><br><img src="1.png" alt="palindromic substrings" title="palindromic substrings"></p>
+<p>Even, in the above case, I am skipping the end line, but if no palindrome found, I still have to traverse O(n<sup>2</sup>).</p>
 <blockquote>
-<p>We can only add closing parenthesis <code>)</code> if it has a pairing <code>(</code> to its left.</p>
+<p>For each position, if I fan-out if left and right match, if they don’t increase index. </p>
 </blockquote>
-<p>So we can add brackets recursively, with the condition that count of <code>(</code> should be greater than equal to <code>)</code>. If we wanted subsequences as well, we can add each addition to resultant array.<br>But, for sequence of length <i>2n</i>, we will add sequence when we have exhausted both parenthesis.</p>
+<p><img src="2.png" alt="palindromic substrings" title="palindromic substrings"></p>
+<p>The above solution has some missing cases, it only checks for odd palindromes. Need to rectify this. For each position, I can start with pos <em>(i)</em> and <em>(i,i+1)</em></p>
+<p>Pseudo code</p>
+<figure class="highlight vbscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> countSubstrings(str) {</span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">loop</span> str:</span><br><span class="line">        total += expandAndCount(i, i)</span><br><span class="line">        total += expandAndCount(i, i+ <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    expandAndCount (<span class="built_in">left</span>, <span class="built_in">right</span>, s) {</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        infinite <span class="keyword">loop</span> ((valid <span class="built_in">left</span> <span class="keyword">and</span> <span class="built_in">right</span>) <span class="keyword">and</span> <span class="built_in">left</span> === <span class="built_in">right</span>):</span><br><span class="line">            increase count;</span><br><span class="line">            expand -&gt; decrease <span class="built_in">left</span> <span class="keyword">and</span> increase <span class="built_in">right</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>Look at the below code, see if it make sense…</p>
-<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight smali"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var generateParenthesis = function(n) {</span><br><span class="line">   <span class="built_in"> const </span>res = [];                                                       // resultant array</span><br><span class="line">   <span class="built_in"> const </span>gen = (left, right, str) =&gt; {</span><br><span class="line">       <span class="built_in"> if </span>(left === n &amp;&amp; right === n) {                                  //<span class="built_in"> add </span>only<span class="built_in"> if </span>both parenthesis are exhausted</span><br><span class="line">            res.push(str)</span><br><span class="line">            return</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">       <span class="built_in"> if </span>(left &lt; n) gen(left + 1, right, str + <span class="string">"("</span>)                     //<span class="built_in"> add </span>only<span class="built_in"> if </span>remaining</span><br><span class="line">       <span class="built_in"> if </span>(left &gt; right) gen(left, right + 1, str + <span class="string">")"</span>)                 //<span class="built_in"> add </span>only<span class="built_in"> if </span>has a pairing opening parenthesis to its left</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    gen(0,0,<span class="string">""</span>)</span><br><span class="line">   <span class="built_in"> return </span>res</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight matlab"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">countSubstrings</span><span class="params">(s)</span> {</span></span><br><span class="line">  let total = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> (let <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; s.<span class="built_in">length</span>; <span class="built_in">i</span>++) {</span><br><span class="line">    total += expandAndCount(<span class="built_in">i</span>, <span class="built_in">i</span>, s);</span><br><span class="line">    total += expandAndCount(<span class="built_in">i</span>, <span class="built_in">i</span>+<span class="number">1</span>, s);</span><br><span class="line">  }</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> total;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">expandAndCount</span><span class="params">(l, r, s)</span> {</span></span><br><span class="line">  let count = <span class="number">0</span>; </span><br><span class="line">  <span class="keyword">while</span> (l &gt; <span class="number">-1</span> &amp;&amp; r &lt; s.<span class="built_in">length</span> &amp;&amp; s[l] === s[r]) {</span><br><span class="line">    count++;</span><br><span class="line">    l--;</span><br><span class="line">    r++;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> count;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
                 <hr>
 
@@ -224,13 +228,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/lc/palindrome_partitioning/" data-toggle="tooltip" data-placement="top" title="Palindrome Partitioning (lc)">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/blog/hexo_octopress/" data-toggle="tooltip" data-placement="top" title="Hexo over Octopress">Next Post &rarr;</a>
+                            <a href="/lc/sort_characters_by_frequency/" data-toggle="tooltip" data-placement="top" title="Sort characters by frequency (lc)">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -257,10 +257,6 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#dp" title="dp">dp</a>
-                        
-                          <a class="tag" href="/tags/#recursion" title="recursion">recursion</a>
-                        
                           <a class="tag" href="/tags/#lc" title="lc">lc</a>
                         
                     </div>

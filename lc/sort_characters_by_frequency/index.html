@@ -94,14 +94,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -215,7 +215,7 @@
 <ol>
 <li>Comparitively, this looks like an easy question. I can use hashmap to store character counts</li>
 <li>In terms of performance, I can maintain a list and update it at runtime, or can sort altogether once I have all the values</li>
-<li>In above, the worst case for former is <code>O(n^2)</code>. I’ll go with simply sorting it <code>O(nlogn)</code> after creating hashmap</li>
+<li>In above, the worst case for former is <strong>O(n<sup>2</sup>)</strong>. I’ll go with simply sorting it <strong>O(nlogn)</strong> after creating hashmap</li>
 </ol>
 <p>Let’s write some pseudo code</p>
 <figure class="highlight smali"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function gen(s) {</span><br><span class="line">    charMap = {}</span><br><span class="line">    loop: s</span><br><span class="line">        plus one to char count in charMap</span><br><span class="line">   <span class="built_in"> add </span>charMap elems to<span class="built_in"> array </span>and sort</span><br><span class="line">   <span class="built_in"> return </span>build string from sorted array</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -227,6 +227,10 @@
                 
 
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/lc/palindromic_substrings/" data-toggle="tooltip" data-placement="top" title="Palindromic Substrings (lc)">&larr; Previous Post</a>
+                        </li>
                     
                     
                         <li class="next">
