@@ -13,11 +13,11 @@
 
     <title>
         
-          Generate Parenthesis (lc) - HD&#39;s Blog
+          HD&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://github.com/kswolf/lc/generate_parenthesis/">
+    <link rel="canonical" href="https://github.com/kswolf/tags/Two-pointers/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -151,171 +151,7 @@
 
 
     <!-- Main Content -->
-    
-<!-- Image to hack wechat -->
-<!-- <img src="https://github.com/kswolf/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
-
-<!-- Post Header -->
-<style type="text/css">
-    header.intro-header{
-        background-image: url('banner.jpg')
-    }
-</style>
-<header class="intro-header">
-    <div style="background-image: url('/img/m15.png'); width: 100%; height: 100%">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <div class="tags">
-                            
-                            <a class="tag" href="/tags/#lc" title="lc">lc</a>
-                            
-                            <a class="tag" href="/tags/#dp" title="dp">dp</a>
-                            
-                            <a class="tag" href="/tags/#recursion" title="recursion">recursion</a>
-                            
-                        </div>
-                        <h1>Generate Parenthesis (lc)</h1>
-                        <h2 class="subheading"></h2>
-                        <span class="meta">
-                            Posted on
-                            11 May 22
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-    <!-- Post Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
-
-                <blockquote>
-<p>An algorithm must be seen to be believed.</p>
-<p>– <cite><a href="https://en.wikipedia.org/wiki/Donald_Knuth" target="_blank" rel="noopener">Donald Knuth</a></cite></p>
-</blockquote>
-<h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" rel="noopener">Problem Statement</a></h4><p>Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
-<p>Example 1:</p>
-<figure class="highlight avrasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">3</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"((()))"</span>,<span class="string">"(()())"</span>,<span class="string">"(())()"</span>,<span class="string">"()(())"</span>,<span class="string">"()()()"</span>]</span><br></pre></td></tr></tbody></table></figure>
-<p>Example 2:</p>
-<figure class="highlight avrasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">1</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"()"</span>]</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure "></a>go_figure <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h4><p>I have <i>n sets</i>. If I had to add all <i>2n</i> parenthesis in any order, we can have a greedy solution using PnC. But we have a <i>constraint</i>:</p>
-<blockquote>
-<p>We can only add closing parenthesis <code>)</code> if it has a pairing <code>(</code> to its left.</p>
-</blockquote>
-<p>So we can add brackets recursively, with the condition that count of <code>(</code> should be greater than equal to <code>)</code>. If we wanted subsequences as well, we can add each addition to resultant array.<br>But, for sequence of length <i>2n</i>, we will add sequence when we have exhausted both parenthesis.</p>
-<p>Look at the below code, see if it make sense…</p>
-<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight smali"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var generateParenthesis = function(n) {</span><br><span class="line">   <span class="built_in"> const </span>res = [];                                                       // resultant array</span><br><span class="line">   <span class="built_in"> const </span>gen = (left, right, str) =&gt; {</span><br><span class="line">       <span class="built_in"> if </span>(left === n &amp;&amp; right === n) {                                  //<span class="built_in"> add </span>only<span class="built_in"> if </span>both parenthesis are exhausted</span><br><span class="line">            res.push(str)</span><br><span class="line">            return</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">       <span class="built_in"> if </span>(left &lt; n) gen(left + 1, right, str + <span class="string">"("</span>)                     //<span class="built_in"> add </span>only<span class="built_in"> if </span>remaining</span><br><span class="line">       <span class="built_in"> if </span>(left &gt; right) gen(left, right + 1, str + <span class="string">")"</span>)                 //<span class="built_in"> add </span>only<span class="built_in"> if </span>has a pairing opening parenthesis to its left</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    gen(0,0,<span class="string">""</span>)</span><br><span class="line">   <span class="built_in"> return </span>res</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
-
-                <hr>
-
-                
-
-                <ul class="pager">
-                    
-                        <li class="previous">
-                            <a href="/lc/palindrome_partitioning/" data-toggle="tooltip" data-placement="top" title="Palindrome Partitioning (lc)">&larr; Previous Post</a>
-                        </li>
-                    
-                    
-                        <li class="next">
-                            <a href="/blog/hexo_octopress/" data-toggle="tooltip" data-placement="top" title="Hexo over Octopress">Next Post &rarr;</a>
-                        </li>
-                    
-                </ul>
-
-                
-
-                
-
-            </div>
-    <!-- Side Catalog Container -->
-        
-
-    <!-- Sidebar Container -->
-
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-                <!-- Featured Tags -->
-                
-                <section>
-                    <!-- no hr -->
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
-                       
-                          <a class="tag" href="/tags/#lc" title="lc">lc</a>
-                        
-                          <a class="tag" href="/tags/#dp" title="dp">dp</a>
-                        
-                          <a class="tag" href="/tags/#recursion" title="recursion">recursion</a>
-                        
-                    </div>
-                </section>
-                
-
-                <!-- Friends Blog -->
-                
-            </div>
-
-        </div>
-    </div>
-</article>
-
-
-
-
-
-
-
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
-        anchors.options = {
-          visible: 'always',
-          placement: 'right',
-          icon: '#'
-        };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
-
-
+    <!-- Default Archive layout, we use archives instead. -->
 
     <!-- Footer -->
     <!-- Footer -->

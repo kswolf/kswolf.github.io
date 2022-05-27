@@ -13,11 +13,11 @@
 
     <title>
         
-          Generate Parenthesis (lc) - HD&#39;s Blog
+          Container With Most Water (lc) - HD&#39;s Blog
         
     </title>
 
-    <link rel="canonical" href="https://github.com/kswolf/lc/generate_parenthesis/">
+    <link rel="canonical" href="https://github.com/kswolf/lc/container_with_most_water/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -172,16 +172,14 @@
                             
                             <a class="tag" href="/tags/#lc" title="lc">lc</a>
                             
-                            <a class="tag" href="/tags/#dp" title="dp">dp</a>
-                            
-                            <a class="tag" href="/tags/#recursion" title="recursion">recursion</a>
+                            <a class="tag" href="/tags/#Two pointers" title="Two pointers">Two pointers</a>
                             
                         </div>
-                        <h1>Generate Parenthesis (lc)</h1>
+                        <h1>Container With Most Water (lc)</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted on
-                            11 May 22
+                            27 May 22
                         </span>
                     </div>
                 </div>
@@ -202,21 +200,38 @@
                 post-container">
 
                 <blockquote>
-<p>An algorithm must be seen to be believed.</p>
-<p>– <cite><a href="https://en.wikipedia.org/wiki/Donald_Knuth" target="_blank" rel="noopener">Donald Knuth</a></cite></p>
+<p>When I wrote this code, only God and I understood what I did. Now only God knows.</p>
+<p>– <cite><a href="https://www.reddit.com/r/ProgrammerHumor/comments/j7t8ju/just_need_to_replace_that_face_with_mine_collected/" target="_blank" rel="noopener">Reddit</a></cite></p>
 </blockquote>
-<h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" rel="noopener">Problem Statement</a></h4><p>Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
-<p>Example 1:</p>
-<figure class="highlight avrasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">3</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"((()))"</span>,<span class="string">"(()())"</span>,<span class="string">"(())()"</span>,<span class="string">"()(())"</span>,<span class="string">"()()()"</span>]</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a><a href="https://leetcode.com/problems/container-with-most-water/" target="_blank" rel="noopener">Problem Statement</a></h4><p>You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).</p>
+<p>Find two lines that together with the x-axis form a container, such that the container contains the most water.</p>
+<p>Return the maximum amount of water a container can store.</p>
+<p>Notice that you may not slant the container.</p>
+<p>Example 1:<br><img src="1.png" alt="container with most water" title="container with most water"><br></p><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: height = [1,8,6,2,5,4,8,3,7]</span><br><span class="line">Output: 49</span><br><span class="line">Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. <span class="keyword">In</span> this case, the max<span class="built_in"> area </span>of water (blue section) the container can contain is 49.</span><br></pre></td></tr></tbody></table></figure><p></p>
 <p>Example 2:</p>
-<figure class="highlight avrasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Input:</span> n = <span class="number">1</span></span><br><span class="line"><span class="symbol">Output:</span> [<span class="string">"()"</span>]</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure "></a>go_figure <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h4><p>I have <i>n sets</i>. If I had to add all <i>2n</i> parenthesis in any order, we can have a greedy solution using PnC. But we have a <i>constraint</i>:</p>
-<blockquote>
-<p>We can only add closing parenthesis <code>)</code> if it has a pairing <code>(</code> to its left.</p>
-</blockquote>
-<p>So we can add brackets recursively, with the condition that count of <code>(</code> should be greater than equal to <code>)</code>. If we wanted subsequences as well, we can add each addition to resultant array.<br>But, for sequence of length <i>2n</i>, we will add sequence when we have exhausted both parenthesis.</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Input:</span> <span class="string">height</span> <span class="string">=</span> <span class="string">[1,1]</span></span><br><span class="line"><span class="attr">Output:</span> <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Constraints:</p>
+<ul>
+<li>n == height.length</li>
+<li>2 &lt;= n &lt;= 105</li>
+<li>0 &lt;= height[i] &lt;= 104</li>
+</ul>
+<h4 id="go-figure"><a href="#go-figure" class="headerlink" title="go_figure "></a>go_figure <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h4><p>Initial thoughts on the problem statement:</p>
+<ol>
+<li>The area is <code>min(h1,h2) * (x2-x1)</code></li>
+<li>There is a <strong>O(n<sup>2</sup>)</strong> solution where I take every 2 pairs and get the maximum area</li>
+<li>Area is defined by 2 points, I thought of 2 pointer solution moving from both ends.</li>
+<li>For a greedy solution, I need to eliminate certain points, If I compare heights at both ends, and move the larger one, the area is surely decreasing since, area is dependent on smallest height.</li>
+</ol>
+<p>Let me dive deep into point 4 explanation, as it forms the important condition to solve this problem.</p>
+<p><img src="2.png" alt="container with most water" title="container with most water"></p>
+<p>The area from starting points -&gt; <code>min(6,9) x 8 = 48</code></p>
+<p>Now, we need to move to larger areas, if I move right, minimum value would be &lt;= 6 always and width is decreasing, so area will surely decrease.<br>I should be moving the smaller value to increase my min value and find the maximum area.</p>
+<p>This will give a solution in <strong>O(n)</strong></p>
+<p>Let’s write some psuedo code</p>
+<figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">gen(s) {</span><br><span class="line">    define <span class="keyword">left</span> and <span class="keyword">right</span>;</span><br><span class="line"></span><br><span class="line">    infinte loop: </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">left</span> &gt;= <span class="keyword">right</span> -&gt; <span class="keyword">break</span></span><br><span class="line">        newArea = area(<span class="keyword">left</span>, <span class="keyword">right</span>, heights)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> leftHeight &gt; rightHeight:</span><br><span class="line">            increase <span class="keyword">left</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            decrease <span class="keyword">right</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span> of newArea</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>Look at the below code, see if it make sense…</p>
-<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight smali"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var generateParenthesis = function(n) {</span><br><span class="line">   <span class="built_in"> const </span>res = [];                                                       // resultant array</span><br><span class="line">   <span class="built_in"> const </span>gen = (left, right, str) =&gt; {</span><br><span class="line">       <span class="built_in"> if </span>(left === n &amp;&amp; right === n) {                                  //<span class="built_in"> add </span>only<span class="built_in"> if </span>both parenthesis are exhausted</span><br><span class="line">            res.push(str)</span><br><span class="line">            return</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">       <span class="built_in"> if </span>(left &lt; n) gen(left + 1, right, str + <span class="string">"("</span>)                     //<span class="built_in"> add </span>only<span class="built_in"> if </span>remaining</span><br><span class="line">       <span class="built_in"> if </span>(left &gt; right) gen(left, right + 1, str + <span class="string">")"</span>)                 //<span class="built_in"> add </span>only<span class="built_in"> if </span>has a pairing opening parenthesis to its left</span><br><span class="line">        </span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    gen(0,0,<span class="string">""</span>)</span><br><span class="line">   <span class="built_in"> return </span>res</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="code-js"><a href="#code-js" class="headerlink" title="code (js)"></a>code (js)</h4><figure class="highlight matlab"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var maxArea = <span class="function"><span class="keyword">function</span><span class="params">(height)</span> {</span></span><br><span class="line">    let <span class="built_in">i</span> = <span class="number">0</span>, <span class="built_in">j</span> = height.<span class="built_in">length</span> - <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    let <span class="built_in">max</span> = -Infinity</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">i</span> !== <span class="built_in">j</span>) {</span><br><span class="line">        let current = area(<span class="built_in">j</span> - <span class="built_in">i</span>, height[<span class="built_in">i</span>], height[<span class="built_in">j</span>]);</span><br><span class="line">        <span class="keyword">if</span> (current &gt; <span class="built_in">max</span>) {</span><br><span class="line">            <span class="built_in">max</span> = current</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (height[<span class="built_in">i</span>] &gt; height[<span class="built_in">j</span>]) {</span><br><span class="line">            <span class="built_in">j</span>--;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="built_in">i</span>++;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> Math.<span class="built_in">max</span>(<span class="built_in">max</span>, <span class="number">0</span>)</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">area</span><span class="params">(x, h1, h2)</span> {</span></span><br><span class="line">    <span class="keyword">return</span> x * Math.<span class="built_in">min</span>(h1, h2)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
                 <hr>
 
@@ -224,13 +239,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/lc/palindrome_partitioning/" data-toggle="tooltip" data-placement="top" title="Palindrome Partitioning (lc)">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/blog/hexo_octopress/" data-toggle="tooltip" data-placement="top" title="Hexo over Octopress">Next Post &rarr;</a>
+                            <a href="/lc/longest_string_chain/" data-toggle="tooltip" data-placement="top" title="Longest String chain (lc)">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -259,9 +270,7 @@
                        
                           <a class="tag" href="/tags/#lc" title="lc">lc</a>
                         
-                          <a class="tag" href="/tags/#dp" title="dp">dp</a>
-                        
-                          <a class="tag" href="/tags/#recursion" title="recursion">recursion</a>
+                          <a class="tag" href="/tags/#Two pointers" title="Two pointers">Two pointers</a>
                         
                     </div>
                 </section>
